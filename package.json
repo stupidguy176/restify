@@ -1,0 +1,29 @@
+{
+  "name": "restify_tutorial_part1",
+  "version": "1.0.0",
+  "description": "Restify tutorial part1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stupidguy176/restify.git"
+  },
+  "keywords": [
+    "restify"
+  ],
+  "author": "stupidguy",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.6.8",
+    "mongoose-timestamp": "^0.6.0",
+    "q": "^1.5.1",
+    "restify": "^7.7.0"
+  },
+  "bugs": {
+    "url": "https://github.com/stupidguy176/restify/issues"
+  },
+  "homepage": "https://github.com/stupidguy176/restify#readme"
+}
