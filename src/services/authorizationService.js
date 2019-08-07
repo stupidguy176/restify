@@ -19,7 +19,7 @@ function getUser(req) {
         return null;
     }
 
-    let publicKey = fs.readFileSync('./public.pem');
+    let publicKey = fs.readFileSync('../public.pem');
 
     return jwt.verify(token, publicKey, function (error, user) {
         if (error) {

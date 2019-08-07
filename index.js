@@ -2,15 +2,15 @@
 
 const restify = require('restify');
 const mongoose = require('mongoose');
-const unless = require('express-unless');
 
 const UserRouter = require('./src/routes/userRouter.js');
 const TodoRouter = require('./src/routes/todoRouter.js');
-const AuthenRouter = require('./routes/authenRouter');
+const AuthenRouter = require('./src/routes/authenRouter.js');
 
 const server = restify.createServer();
 
-const dropUnauthorizedRequest = require('./middlewares/dropUnauthorizedRequest');
+const dropUnauthorizedRequest = require('./src/middlewares/dropUnauthorizedRequest');
+const unless = require('express-unless');
 
 // routes dont need token put in unless
 server.use(dropUnauthorizedRequest.unless({ path: [

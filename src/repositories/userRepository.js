@@ -139,5 +139,6 @@ module.exports = {
   update: update,
   remove: remove,
   findById: findById,
-  getList: getList
+  getList: getList,
+  findByUsernameOrEmail: findByUsernameOrEmail
 };

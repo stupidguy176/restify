@@ -1,30 +1,31 @@
 "use strict";
 
-    const UserController = require('../controllers/userController');
+const UserController = require('../controllers/userController');
 
-    module.exports = function(server){
-      /**
-       * POST
-       */
-      server.post('/api/v1/users',  UserController.create);
+module.exports = function (server) {
+  /**
+   * POST
+   */
+  server.post('/api/v1/users', UserController.create);
 
-      /**
-       * LIST
-       */
-      server.get('/api/v1/users',  UserController.list);
+  /**
+   * LIST
+   */
+  server.get('/api/v1/users', UserController.list);
 
-      /**
-       * GET
-       */
-      server.get('/api/v1/users/:id',  UserController.one);
+  /**
+   * GET
+   */
+  server.get('/api/v1/users/:id', UserController.one);
 
-      /**
-       * UPDATE
-       */
-      server.put('/api/v1/users/:id',  UserController.update);
+  /**
+   * UPDATE
+   */
+  server.put('/api/v1/users/:id', UserController.update);
 
-      /**
-       * DELETE
-       */
-      server.del('/api/v1/users/:id',  UserController.remove);
-    };
+  /**
+   * DELETE
+   */
+  server.del('/api/v1/users/:id', UserController.remove);
+
+};
