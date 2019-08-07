@@ -2,18 +2,27 @@
 
 const restify = require('restify');
 const mongoose = require('mongoose');
+const unless = require('express-unless');
+
 const UserRouter = require('./src/routes/userRouter.js');
 const TodoRouter = require('./src/routes/todoRouter.js');
-
+const AuthenRouter = require('./routes/authenRouter');
 
 const server = restify.createServer();
 
+const dropUnauthorizedRequest = require('./middlewares/dropUnauthorizedRequest');
+
+// routes dont need token put in unless
+server.use(dropUnauthorizedRequest.unless({ path: [
+    '/api/v1/todos',
+    '/api/v1/getToken'
+] }));
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser({ mapParams: true }));
 server.use(restify.plugins.fullResponse());
 
-server.listen(8080, function() {
+server.listen(8080, function () {
     // establish connection to mongodb
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://localhost');
@@ -26,6 +35,7 @@ server.listen(8080, function() {
     db.once('open', function () {
         UserRouter(server);
         TodoRouter(server);
+        AuthenRouter(server);
     });
 
     console.log('%s listening at %s', server.name, server.url);
